@@ -19,9 +19,10 @@ public class Player extends Actor {
      * @param displayChar Character to represent the player in the UI
      * @param hitPoints   Player's starting number of hitpoints
      */
-    public Player(String name, char displayChar, int hitPoints) {
+    public Player(String name, char displayChar, int hitPoints, int hydration, int warmth) {
         super(name, displayChar, hitPoints);
         this.setIntrinsicWeapon(new BareFist());
+
     }
 
     @Override
