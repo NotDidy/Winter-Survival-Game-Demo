@@ -12,6 +12,10 @@ import edu.monash.fit2099.engine.displays.Menu;
  * @author Adrian Kristanto
  */
 public class Player extends Actor {
+    private int hydration;
+
+    private int warmth;
+
     /**
      * Constructor.
      *
@@ -22,9 +26,19 @@ public class Player extends Actor {
     public Player(String name, char displayChar, int hitPoints, int hydration, int warmth) {
         super(name, displayChar, hitPoints);
         this.setIntrinsicWeapon(new BareFist());
+        this.hydration = hydration;
+        this.warmth = warmth;
+        int HYDRATION_DECREASE_VALUE = 1;
 
     }
 
+    public void decreaseHydration (int value){
+        hydration = hydration - value;
+    }
+
+    public void decreaseWarmth (int value){
+        warmth = warmth - value;
+    }
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         // Handle multi-turn Actions
