@@ -42,6 +42,14 @@ public class Player extends Actor {
         warmth = warmth - value;
     }
 
+    public int getHydration(){
+        return this.hydration;
+    }
+
+    public int getWarmth(){
+        return this.warmth;
+    }
+
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         // Handle multi-turn Actions
