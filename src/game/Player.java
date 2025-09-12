@@ -16,6 +16,8 @@ public class Player extends Actor {
 
     private int warmth;
 
+    private static final int HYDRATION_DECREASE_VALUE = 1;
+    private static final int WARMTH_DECREASE_VALUE = 1;
     /**
      * Constructor.
      *
@@ -28,7 +30,7 @@ public class Player extends Actor {
         this.setIntrinsicWeapon(new BareFist());
         this.hydration = hydration;
         this.warmth = warmth;
-        int HYDRATION_DECREASE_VALUE = 1;
+
 
     }
 
@@ -39,6 +41,7 @@ public class Player extends Actor {
     public void decreaseWarmth (int value){
         warmth = warmth - value;
     }
+
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         // Handle multi-turn Actions
@@ -47,6 +50,17 @@ public class Player extends Actor {
 
         // return/print the console menu
         Menu menu = new Menu(actions);
+
+        //Decrease hydration and warmth after every turn
+        this.decreaseHydration(HYDRATION_DECREASE_VALUE);
+        this.decreaseWarmth(WARMTH_DECREASE_VALUE);
+
+        //Print player hydration and warmth
+        System.out.println(this.ToString());
         return menu.showMenu(this, display);
+    }
+
+    public String ToString() {
+        return "(" + this.name + ")" + " has a hydration level of " + this.hydration + " and a warmth level of " + this.warmth;
     }
 }
