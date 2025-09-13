@@ -40,6 +40,6 @@ public class AttackAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " punches " + target + " at " + direction;
+        return actor + " punches " + target + " at " + direction + " with " + actor.getIntrinsicWeapon();
     }
 }
