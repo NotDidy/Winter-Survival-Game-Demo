@@ -10,8 +10,7 @@ import edu.monash.fit2099.engine.positions.World;
 import game.animals.Bear;
 import game.animals.Deer;
 import game.animals.Wolf;
-import game.items.Bedroll;
-import game.items.Bottle;
+import game.items.*;
 import game.player.Player;
 
 import java.util.Arrays;
@@ -27,10 +26,11 @@ public class Earth extends World {
     public void constructWorld() throws Exception {
         DefaultGroundCreator groundCreator = new DefaultGroundCreator();
         groundCreator.registerGround('.', Snow::new);
+        groundCreator.registerGround('Y', YewBerryTree ::new);
 
         List<String> map = Arrays.asList(
                 "........................................",
-                "........................................",
+                ".............Y..........................",
                 "........................................",
                 "........................................",
                 "........................................",
@@ -46,9 +46,12 @@ public class Earth extends World {
 
 
         this.addPlayer(this.player, gameMap.at(1, 1));
-        gameMap.at(2, 1).addActor(new Bear());
+        //gameMap.at(2, 1).addActor(new Bear());
+        //gameMap.at(7, 6).addActor(new Wolf());
+        //gameMap.at(3, 3).addActor(new Deer());
         this.player.addItemToInventory(new Bedroll());
         this.player.addItemToInventory(new Bottle());
+        this.player.addItemToInventory(new YewBerry());
     }
 
 
