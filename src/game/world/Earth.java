@@ -26,10 +26,11 @@ public class Earth extends World {
     public void constructWorld() throws Exception {
         DefaultGroundCreator groundCreator = new DefaultGroundCreator();
         groundCreator.registerGround('.', Snow::new);
+        groundCreator.registerGround('T', AppleTree ::new);
 
         List<String> map = Arrays.asList(
                 "........................................",
-                "........................................",
+                ".............T..........................",
                 "........................................",
                 "........................................",
                 "........................................",
