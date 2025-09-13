@@ -10,10 +10,7 @@ import edu.monash.fit2099.engine.positions.World;
 import game.animals.Bear;
 import game.animals.Deer;
 import game.animals.Wolf;
-import game.items.Apple;
-import game.items.Bedroll;
-import game.items.Bottle;
-import game.items.Hazelnut;
+import game.items.*;
 import game.player.Player;
 
 import java.util.Arrays;
@@ -53,7 +50,7 @@ public class Earth extends World {
         //gameMap.at(3, 3).addActor(new Deer());
         this.player.addItemToInventory(new Bedroll());
         this.player.addItemToInventory(new Bottle());
-        this.player.addItemToInventory(new Hazelnut());
+        this.player.addItemToInventory(new YewBerry());
     }
 
 
