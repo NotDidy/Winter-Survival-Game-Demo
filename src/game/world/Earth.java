@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.DefaultGroundCreator;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.animals.Bear;
 import game.animals.Deer;
 import game.animals.Wolf;
 import game.items.Bedroll;
@@ -45,7 +46,7 @@ public class Earth extends World {
 
 
         this.addPlayer(this.player, gameMap.at(1, 1));
-        gameMap.at(2, 1).addActor(new Wolf());
+        gameMap.at(2, 1).addActor(new Bear());
         this.player.addItemToInventory(new Bedroll());
         this.player.addItemToInventory(new Bottle());
     }
