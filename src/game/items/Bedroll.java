@@ -3,7 +3,7 @@ package game.items;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
-import game.items.itemactions.SleepAction;
+import game.actions.SleepAction;
 import game.items.iteminterfaces.Sleepable;
 import game.player.Player;
 
