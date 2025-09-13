@@ -1,5 +1,6 @@
 package game.world;
 
+import edu.monash.fit2099.demo.forest.HuntsmanSpider;
 import edu.monash.fit2099.engine.GameEngineException;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
@@ -43,7 +44,7 @@ public class Earth extends World {
 
 
         this.addPlayer(this.player, gameMap.at(1, 1));
-        this.addPlayer(new Deer(), gameMap.at(5,1));
+        gameMap.at(2, 1).addActor(new Deer());
         this.player.addItemToInventory(new Bedroll());
         this.player.addItemToInventory(new Bottle());
     }

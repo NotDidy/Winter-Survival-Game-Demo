@@ -20,24 +20,19 @@ public class WanderBehaviour implements Behaviour {
 
     @Override
     public Action generateAction(Actor actor, GameMap map) {
-        Location here = map.locationOf(actor);
-        List<Exit> exits = here.getExits();
-        List<Exit> possibleMoves = new ArrayList<>();
+        ArrayList<Action> actions = new ArrayList<>();
 
-        // Collect all exits the actor can move into
-        for (Exit exit : exits) {
-            if (exit.getDestination().canActorEnter(actor)) {
-                possibleMoves.add(exit);
+        for(Exit exit : map.locationOf(actor).getExits()) {
+            Location destination = exit.getDestination();
+            if (destination.canActorEnter(actor)) {
+                actions.add(exit.getDestination().getMoveAction(actor, "around", exit.getHotKey()));
             }
         }
 
-        if (!possibleMoves.isEmpty()) {
-            Exit chosenExit = possibleMoves.get(random.nextInt(possibleMoves.size()));
-
-
-            return new MoveActorAction(chosenExit.getDestination(), chosenExit.getName());
+        if (!actions.isEmpty()) {
+            return actions.get(this.random.nextInt(actions.size()));
+        } else {
+            return null;
         }
-
-        return null; // no moves available
     }
 }

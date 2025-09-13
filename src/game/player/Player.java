@@ -8,6 +8,8 @@ import edu.monash.fit2099.engine.actors.attributes.BaseAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import edu.monash.fit2099.engine.weapons.Weapon;
 import game.weapons.BareFist;
 
 /**
@@ -75,6 +77,10 @@ public class Player extends Actor {
         }
     }
 
+
+    public void setWeapon(IntrinsicWeapon weapon) {
+        this.setIntrinsicWeapon(weapon);
+    }
 
 
     @Override

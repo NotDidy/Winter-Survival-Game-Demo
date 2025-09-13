@@ -7,9 +7,8 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
+import game.actions.AttackAction;
 import game.animals.behaviors.WanderBehaviour;
-//import edu.monash.fit2099.engine.behaviours.Behaviour;
-//import edu.monash.fit2099.engine.behaviours.WanderBehaviour;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,5 +31,16 @@ public class Deer extends Actor {
             }
         }
         return new DoNothingAction();
+    }
+
+    @Override
+    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+        ActionList actions = new ActionList();
+
+        // The Deer cannot attack back (for now)
+        // But Explorer (or other actors) can attack it
+        actions.add(new AttackAction(this, direction));
+
+        return actions;
     }
 }
