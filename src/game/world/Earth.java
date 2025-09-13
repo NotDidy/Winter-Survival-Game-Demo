@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.DefaultGroundCreator;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.items.Bedroll;
+import game.items.Bottle;
 import game.player.Player;
 
 import java.util.Arrays;
@@ -42,6 +43,7 @@ public class Earth extends World {
 
         this.addPlayer(this.player, gameMap.at(1, 1));
         this.player.addItemToInventory(new Bedroll());
+        this.player.addItemToInventory(new Bottle());
     }
 
 

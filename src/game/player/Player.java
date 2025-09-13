@@ -60,8 +60,8 @@ public class Player extends Actor {
         this.sleepTurns = turns;
     }
 
-    public boolean isSleeping() {
-        return sleepTurns > 0;
+    public void increaseHydration(int value) {
+        hydration = hydration + value;
     }
 
 
@@ -90,7 +90,7 @@ public class Player extends Actor {
         if (sleepTurns > 1) {
             sleepTurns--;
             // While sleeping, skip action (but world still ticks)
-            System.out.println(name + " lies down and sleeps for " + sleepTurns + " turns.");
+            System.out.println(name + " is sleeping for " + sleepTurns + " turns.");
             return new DoNothingAction();
         } else {
             //Decrease hydration and warmth after every turn
