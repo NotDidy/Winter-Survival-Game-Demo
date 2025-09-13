@@ -1,4 +1,4 @@
-package game.items.iteminterfaces;
+package game.interfaces;
 
 import game.player.Player;
 

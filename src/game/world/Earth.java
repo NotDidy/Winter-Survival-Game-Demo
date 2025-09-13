@@ -27,13 +27,15 @@ public class Earth extends World {
         DefaultGroundCreator groundCreator = new DefaultGroundCreator();
         groundCreator.registerGround('.', Snow::new);
         groundCreator.registerGround('Y', YewBerryTree ::new);
+        groundCreator.registerGround('T', AppleTree ::new);
+        groundCreator.registerGround('A', HazelnutTree ::new);
 
         List<String> map = Arrays.asList(
                 "........................................",
                 ".............Y..........................",
+                "........T...............................",
                 "........................................",
-                "........................................",
-                "........................................",
+                "...A....................................",
                 "........................................",
                 "........................................",
                 "........................................",
@@ -51,7 +53,7 @@ public class Earth extends World {
         //gameMap.at(3, 3).addActor(new Deer());
         this.player.addItemToInventory(new Bedroll());
         this.player.addItemToInventory(new Bottle());
-        this.player.addItemToInventory(new YewBerry());
+        //this.player.addItemToInventory(new YewBerry());
     }
 
 
