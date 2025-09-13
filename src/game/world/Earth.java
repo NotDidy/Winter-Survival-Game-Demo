@@ -10,8 +10,10 @@ import edu.monash.fit2099.engine.positions.World;
 import game.animals.Bear;
 import game.animals.Deer;
 import game.animals.Wolf;
+import game.items.Apple;
 import game.items.Bedroll;
 import game.items.Bottle;
+import game.items.Hazelnut;
 import game.player.Player;
 
 import java.util.Arrays;
@@ -46,11 +48,12 @@ public class Earth extends World {
 
 
         this.addPlayer(this.player, gameMap.at(1, 1));
-        gameMap.at(2, 1).addActor(new Bear());
-        gameMap.at(7, 6).addActor(new Wolf());
-        gameMap.at(3, 3).addActor(new Deer());
+        //gameMap.at(2, 1).addActor(new Bear());
+        //gameMap.at(7, 6).addActor(new Wolf());
+        //gameMap.at(3, 3).addActor(new Deer());
         this.player.addItemToInventory(new Bedroll());
         this.player.addItemToInventory(new Bottle());
+        this.player.addItemToInventory(new Hazelnut());
     }
 
 
