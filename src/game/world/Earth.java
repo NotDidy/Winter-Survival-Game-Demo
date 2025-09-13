@@ -1,9 +1,10 @@
-package game;
+package game.world;
 
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.DefaultGroundCreator;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.player.Player;
 
 import java.util.Arrays;
 import java.util.List;
