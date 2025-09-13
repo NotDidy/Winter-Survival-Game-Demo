@@ -3,6 +3,7 @@ package game.player;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.attributes.BaseAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
@@ -16,6 +17,8 @@ public class Player extends Actor {
     private int hydration;
 
     private int warmth;
+
+    private int sleepTurns = 0;
 
     private static final int HYDRATION_DECREASE_VALUE = 1;
     private static final int WARMTH_DECREASE_VALUE = 1;
@@ -49,6 +52,25 @@ public class Player extends Actor {
 
     public int getWarmth(){
         return this.warmth;
+    }
+
+    public void setSleeping(int turns) {
+        this.sleepTurns = turns;
+    }
+
+    public boolean isSleeping() {
+        return sleepTurns > 0;
+    }
+
+    @Override
+    public boolean isConscious() {
+        if (this.getHydration() < 1 || this.getWarmth() < 1) {
+            System.out.println(this.name + " perished");
+            return false;
+        }
+        else {
+            return this.getAttribute(BaseAttributes.HEALTH) > 0;
+        }
     }
 
     @Override

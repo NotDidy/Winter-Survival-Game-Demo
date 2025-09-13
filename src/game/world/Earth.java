@@ -43,9 +43,10 @@ public class Earth extends World {
     @Override
     protected boolean stillRunning() {
 
-        if (this.player.getHydration() < 1 || this.player.getWarmth() < 1) {
-            System.out.println(this.player + " perished");
+        if (!player.isConscious()) {
             return false;
+
+
         }
         else {
             return this.actorLocations.contains(this.player);
