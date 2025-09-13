@@ -37,7 +37,7 @@ public class AppleTree extends Ground {
                 Location dropLocation = randomExit.getDestination();
 
                 dropLocation.addItem(new Apple());
-                System.out.println("A wild apple drops near the tree.");
+                System.out.println("A wild apple drops near a tree.");
             }
         }
     }
