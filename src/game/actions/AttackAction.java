@@ -15,8 +15,7 @@ public class AttackAction extends Action {
 
 
     // Bare fist attack values (can be adjusted or replaced by weapons later)
-    private static final int BARE_FIST_DAMAGE = 5;
-    private static final int BARE_FIST_HIT_CHANCE = 50; // percentage
+
 
     public AttackAction(Actor target, String direction) {
         this.target = target;
@@ -33,8 +32,7 @@ public class AttackAction extends Action {
         if (!target.isConscious()) {
             return target.unconscious(actor, map);
 
-            //map.removeActor(target);
-            //return actor + " punches " + target + " for " + BARE_FIST_DAMAGE + " damage and kills it!";
+
         } else {
             return " ";
         }
@@ -42,6 +40,6 @@ public class AttackAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " punches " + target;
+        return actor + " punches " + target + " at " + direction;
     }
 }
