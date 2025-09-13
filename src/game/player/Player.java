@@ -2,11 +2,13 @@ package game.player;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.BaseAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import game.items.iteminterfaces.Sleepable;
 import game.weapons.BareFist;
 
 /**
@@ -54,13 +56,14 @@ public class Player extends Actor {
         return this.warmth;
     }
 
-    public void setSleeping(int turns) {
+    public void setSleepTurns(int turns) {
         this.sleepTurns = turns;
     }
 
     public boolean isSleeping() {
         return sleepTurns > 0;
     }
+
 
     @Override
     public boolean isConscious() {
@@ -73,6 +76,8 @@ public class Player extends Actor {
         }
     }
 
+
+
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         // Handle multi-turn Actions
@@ -82,13 +87,22 @@ public class Player extends Actor {
         // return/print the console menu
         Menu menu = new Menu(actions);
 
-        //Decrease hydration and warmth after every turn
-        this.decreaseHydration(HYDRATION_DECREASE_VALUE);
-        this.decreaseWarmth(WARMTH_DECREASE_VALUE);
+        if (sleepTurns > 1) {
+            sleepTurns--;
+            // While sleeping, skip action (but world still ticks)
+            System.out.println(name + " lies down and sleeps for " + sleepTurns + " turns.");
+            return new DoNothingAction();
+        } else {
+            //Decrease hydration and warmth after every turn
+            this.decreaseHydration(HYDRATION_DECREASE_VALUE);
+            this.decreaseWarmth(WARMTH_DECREASE_VALUE);
 
-        //Print player hydration and warmth
-        System.out.println(this.ToString());
-        return menu.showMenu(this, display);
+
+            //Print player hydration and warmth
+            System.out.println(this.ToString());
+            return menu.showMenu(this, display);
+        }
+
     }
 
     public String ToString() {

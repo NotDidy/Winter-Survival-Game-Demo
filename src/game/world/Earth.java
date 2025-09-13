@@ -1,9 +1,12 @@
 package game.world;
 
+import edu.monash.fit2099.engine.GameEngineException;
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.DefaultGroundCreator;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.items.Bedroll;
 import game.player.Player;
 
 import java.util.Arrays;
@@ -38,14 +41,15 @@ public class Earth extends World {
 
 
         this.addPlayer(this.player, gameMap.at(1, 1));
+        this.player.addItemToInventory(new Bedroll());
     }
+
 
     @Override
     protected boolean stillRunning() {
 
         if (!player.isConscious()) {
             return false;
-
 
         }
         else {
