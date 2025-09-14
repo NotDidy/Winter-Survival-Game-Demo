@@ -1,6 +1,7 @@
 package game.items;
 
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.SleepAction;
@@ -21,7 +22,9 @@ public class Bedroll extends Item implements Sleepable {
 
     //Implement Logic
     @Override
-    public String sleptBy(Player player) {
+    public String sleptBy(Actor actor) {
+        Player player = (Player) actor;
+
         int turns = 6 + rand.nextInt(5);
         player.setSleepTurns(turns);
         return player + " lies down and sleeps for " + turns + " turns.";

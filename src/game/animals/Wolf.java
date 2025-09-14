@@ -11,10 +11,11 @@ import game.actions.AttackAction;
 import game.actions.TameAction;
 import game.animals.behaviors.AttackBehaviour;
 import game.animals.behaviors.FollowBehaviour;
+import game.animals.behaviors.ProtectOwnerBehaviour;
 import game.animals.behaviors.WanderBehaviour;
 
 import game.interfaces.Tameable;
-import game.items.ConsumableType;
+import game.items.TamingItemType;
 import game.items.TamingItem;
 import game.player.Player;
 import game.weapons.WolfBite;
@@ -30,6 +31,8 @@ public class Wolf extends Actor implements Tameable {
     private final Map<Integer, Behaviour> behaviours = new HashMap<>();
     private boolean tamed = false;
     private Actor owner;
+
+
 
     public Wolf() {
         super("Wolf", 'e', 100); // name, display char, hitpoints
@@ -53,14 +56,20 @@ public class Wolf extends Actor implements Tameable {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
 
+        if (!tamed) {
+            actions.add(new AttackAction(this, direction));
+        }
 
-        actions.add(new AttackAction(this, direction));
 
         List<Item> playerItems = otherActor.getItemInventory();
         for (Item item : playerItems) {
-            if (canBeTamedWith((TamingItem) item)) {
-                actions.add(new TameAction(this, (TamingItem) item));
-            }
+            // use asCapability to safely check if item has TamingItem capability
+            item.asCapability(TamingItem.class).ifPresent(tamingItem -> {
+                // check if this Wolf can be tamed with that TamingItem
+                if (this.canBeTamedWith(tamingItem)) {
+                    actions.add(new TameAction(this, tamingItem));
+                }
+            });
         }
 
 
@@ -69,8 +78,8 @@ public class Wolf extends Actor implements Tameable {
     }
 
     @Override
-    public ConsumableType getPreferredFoodType() {
-        return ConsumableType.MEAT;
+    public TamingItemType getTamingItemType() {
+        return TamingItemType.FOR_PREDATORS;
     }
 
 

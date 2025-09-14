@@ -23,7 +23,8 @@ public class YewBerry extends Item implements Consumable {
     }
 
     @Override
-    public String consumedBy(Player player) {
+    public String consumedBy(Actor actor) {
+        Player player = (Player) actor;
         player.modifyAttribute(BaseAttributes.HEALTH, ActorAttributeOperation.UPDATE, 0);
         player.removeItemFromInventory(this);// custom method in Player to lower thirst
         return player + " consumed a " + this.getClass().getSimpleName() + " and instantly died.";

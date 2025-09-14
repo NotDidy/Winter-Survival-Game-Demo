@@ -49,11 +49,11 @@ public class Earth extends World {
 
         this.addPlayer(this.player, gameMap.at(1, 1));
         //gameMap.at(2, 1).addActor(new Bear());
-        //gameMap.at(7, 6).addActor(new Wolf());
-        //gameMap.at(3, 3).addActor(new Deer());
+        gameMap.at(2, 1).addActor(new Bear());
+        gameMap.at(2, 4).addActor(new Bear());
         this.player.addItemToInventory(new Bedroll());
         this.player.addItemToInventory(new Bottle());
-        //this.player.addItemToInventory(new YewBerry());
+        this.player.addItemToInventory(new Bones());
     }
 
 

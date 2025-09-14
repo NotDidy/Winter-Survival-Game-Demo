@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.interfaces.Sleepable;
-import game.player.Player;
+
 
 
 
@@ -20,7 +20,7 @@ public class SleepAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        return item.sleptBy((Player) actor);
+        return item.sleptBy(actor);
     }
 
     @Override

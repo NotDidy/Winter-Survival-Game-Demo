@@ -23,7 +23,8 @@ public class Hazelnut extends Item implements Consumable {
     }
 
     @Override
-    public String consumedBy(Player player) {
+    public String consumedBy(Actor actor) {
+        Player player = (Player) actor;
         player.modifyStatsMaximum(BaseAttributes.HEALTH, ActorAttributeOperation.INCREASE, 1);
         player.modifyAttribute(BaseAttributes.HEALTH, ActorAttributeOperation.UPDATE, player.getMaximumAttribute(BaseAttributes.HEALTH));
         player.removeItemFromInventory(this);

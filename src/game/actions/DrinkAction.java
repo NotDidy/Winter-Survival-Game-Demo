@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.interfaces.Drinkable;
-import game.player.Player;
 
 public class DrinkAction extends Action {
     private final Drinkable item;
@@ -15,7 +14,7 @@ public class DrinkAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        return item.drunkBy((Player) actor);
+        return item.drunkBy(actor);
 
     }
 

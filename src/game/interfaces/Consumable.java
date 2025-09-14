@@ -1,7 +1,8 @@
 package game.interfaces;
 
-import game.player.Player;
+import edu.monash.fit2099.engine.actors.Actor;
+
 
 public interface Consumable {
-    String consumedBy(Player player);
+    String consumedBy(Actor actor);
 }

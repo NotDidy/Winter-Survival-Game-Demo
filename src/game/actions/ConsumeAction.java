@@ -15,7 +15,7 @@ public class ConsumeAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        return item.consumedBy((Player) actor);
+        return item.consumedBy(actor);
 
     }
 

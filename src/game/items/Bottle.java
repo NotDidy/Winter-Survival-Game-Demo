@@ -19,7 +19,9 @@ public class Bottle extends Item implements Drinkable {
 
 
     @Override
-    public String drunkBy(Player player) {
+    public String drunkBy(Actor actor) {
+        Player player = (Player) actor;
+
         if (capacity > 0) {
             capacity--;
             player.increaseHydration(4);

@@ -1,6 +1,6 @@
 package game.interfaces;
 
-import game.items.ConsumableType;
+import game.items.TamingItemType;
 import game.items.TamingItem;
 import game.player.Player;
 
@@ -8,10 +8,10 @@ public interface Tameable {
 
 
 
-     default boolean canBeTamedWith(TamingItem item) {
-        return item.getConsumableType() == getPreferredFoodType();
+    default boolean canBeTamedWith(TamingItem item) {
+        return item.getConsumableType() == getTamingItemType();
     }
-    ConsumableType getPreferredFoodType();
+    TamingItemType getTamingItemType();
 
 
     void onTamedBy(Player player);
