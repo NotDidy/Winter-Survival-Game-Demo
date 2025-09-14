@@ -30,7 +30,7 @@ public class FollowBehaviour implements Behaviour {
 
         Location ownerLocation = map.locationOf(owner);
 
-        // If we know where the owner was last turn, try to move there
+
         if (lastOwnerLocation != null) {
             // If follower is already standing there, no need to move
             if (!map.locationOf(actor).equals(lastOwnerLocation)) {

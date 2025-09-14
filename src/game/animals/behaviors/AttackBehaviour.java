@@ -26,6 +26,6 @@ public class AttackBehaviour implements Behaviour {
                 }
             }
         }
-        return null; // no attack possible
+        return null;
     }
 }

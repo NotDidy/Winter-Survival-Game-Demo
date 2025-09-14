@@ -20,7 +20,7 @@ public class Bedroll extends Item implements Sleepable {
         super("Bedroll", '=', true);
     }
 
-    //Implement Logic
+
     @Override
     public String sleptBy(Actor actor) {
         Player player = (Player) actor;

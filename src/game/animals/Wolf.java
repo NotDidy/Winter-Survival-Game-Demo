@@ -35,10 +35,10 @@ public class Wolf extends Actor implements Tameable {
 
 
     public Wolf() {
-        super("Wolf", 'e', 100); // name, display char, hitpoints
+        super("Wolf", 'e', 100);
         this.setIntrinsicWeapon(new WolfBite());
-        behaviours.put(5, new AttackBehaviour()); // higher priority → attack first
-        behaviours.put(10, new WanderBehaviour()); // lower priority → wander if no attack
+        behaviours.put(5, new AttackBehaviour());
+        behaviours.put(10, new WanderBehaviour());
     }
 
     @Override
@@ -49,7 +49,7 @@ public class Wolf extends Actor implements Tameable {
                 return action;
             }
         }
-        return lastAction.getNextAction(); // do nothing if no behaviour applies
+        return lastAction.getNextAction();
     }
 
     @Override
@@ -63,9 +63,9 @@ public class Wolf extends Actor implements Tameable {
 
         List<Item> playerItems = otherActor.getItemInventory();
         for (Item item : playerItems) {
-            // use asCapability to safely check if item has TamingItem capability
+
             item.asCapability(TamingItem.class).ifPresent(tamingItem -> {
-                // check if this Wolf can be tamed with that TamingItem
+
                 if (this.canBeTamedWith(tamingItem)) {
                     actions.add(new TameAction(this, tamingItem));
                 }
@@ -87,7 +87,7 @@ public class Wolf extends Actor implements Tameable {
     public void onTamedBy(Player player) {
         this.tamed = true;
         this.owner = player;
-        behaviours.clear(); // stop random wandering
+        behaviours.clear();
         behaviours.put(10, new FollowBehaviour(player));
         behaviours.put(5, new ProtectOwnerBehaviour(player));
 

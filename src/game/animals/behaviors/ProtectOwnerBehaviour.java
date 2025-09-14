@@ -36,7 +36,7 @@ public class ProtectOwnerBehaviour implements Behaviour {
 
                 // Prevent attacking the owner or itself
                 if (potentialEnemy != owner && potentialEnemy != actor) {
-                    // Later you could refine: check if enemy is hostile type
+
                     return new AttackAction(potentialEnemy, "to protect its owner");
                 }
             }

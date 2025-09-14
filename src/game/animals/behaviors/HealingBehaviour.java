@@ -52,7 +52,7 @@ public class HealingBehaviour implements Behaviour {
 
 
 
-        // Nothing to heal -> let other behaviours run
+
         return null;
     }
 }

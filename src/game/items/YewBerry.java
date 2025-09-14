@@ -18,7 +18,7 @@ public class YewBerry extends Item implements Consumable {
 
     public YewBerry() {
         super("Yew Berry", 'x', true);
-        // Add a consume action so Explorer can eat it
+
 
     }
 

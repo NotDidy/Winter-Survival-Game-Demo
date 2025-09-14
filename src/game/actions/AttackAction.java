@@ -14,7 +14,6 @@ public class AttackAction extends Action {
     private final String direction;
 
 
-    // Bare fist attack values (can be adjusted or replaced by weapons later)
 
 
     public AttackAction(Actor target, String direction) {

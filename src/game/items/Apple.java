@@ -25,7 +25,7 @@ public class Apple extends Item implements Consumable {
 
         player.heal(3); // restore health
         player.increaseHydration(2);
-        player.removeItemFromInventory(this);// custom method in Player to lower thirst
+        player.removeItemFromInventory(this);
         return player + " consumes " + this.getClass().getSimpleName() + " and increases hydration by 2 and heals by 3";
     }
 

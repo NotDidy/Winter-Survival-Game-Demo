@@ -28,8 +28,8 @@ public class Deer extends Actor implements Tameable {
     private Actor owner;
 
     public Deer() {
-        super("Deer", 'd', 50); // name, displayChar, hitPoints
-        behaviours.put(10, new WanderBehaviour()); // wander around
+        super("Deer", 'd', 50);
+        behaviours.put(10, new WanderBehaviour());
     }
 
     @Override
@@ -55,9 +55,9 @@ public class Deer extends Actor implements Tameable {
 
         List<Item> playerItems = otherActor.getItemInventory();
         for (Item item : playerItems) {
-            // use asCapability to safely check if item has TamingItem capability
+
             item.asCapability(TamingItem.class).ifPresent(tamingItem -> {
-                // check if this Wolf can be tamed with that TamingItem
+
                 if (this.canBeTamedWith(tamingItem)) {
                     actions.add(new TameAction(this, tamingItem));
                 }
@@ -78,7 +78,7 @@ public class Deer extends Actor implements Tameable {
     public void onTamedBy(Player player) {
         this.tamed = true;
         this.owner = player;
-        behaviours.clear(); // stop random wandering
+        behaviours.clear();
         behaviours.put(10, new FollowBehaviour(player));
         behaviours.put(5, new HealingBehaviour(player, 20, 70));
 

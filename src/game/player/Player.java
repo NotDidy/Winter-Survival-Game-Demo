@@ -9,7 +9,6 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import edu.monash.fit2099.engine.weapons.Weapon;
 import game.weapons.BareFist;
 
 /**
@@ -94,7 +93,7 @@ public class Player extends Actor {
 
         if (sleepTurns > 1) {
             sleepTurns--;
-            // While sleeping, skip action (but world still ticks)
+            // While sleeping, skip action
             System.out.println(name + " is sleeping for " + sleepTurns + " turns.");
             return new DoNothingAction();
         } else {

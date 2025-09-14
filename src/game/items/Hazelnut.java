@@ -39,9 +39,7 @@ public class Hazelnut extends Item implements Consumable {
     }
 
 
-    /**
-     * Called when the item is consumed.
-     */
+
 
 
 }
