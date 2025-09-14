@@ -3,23 +3,36 @@ package game.animals;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import game.actions.AttackAction;
+import game.actions.TameAction;
 import game.animals.behaviors.AttackBehaviour;
+import game.animals.behaviors.FollowBehaviour;
+import game.animals.behaviors.ProtectOwnerBehaviour;
 import game.animals.behaviors.WanderBehaviour;
 
+import game.interfaces.Tameable;
+import game.items.TamingItemType;
+import game.items.TamingItem;
+import game.player.Player;
 import game.weapons.WolfBite;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * A Wolf that roams the world and can bite other actors.
  */
-public class Wolf extends Actor {
+public class Wolf extends Actor implements Tameable {
     private final Map<Integer, Behaviour> behaviours = new HashMap<>();
+    private boolean tamed = false;
+    private Actor owner;
+
+
 
     public Wolf() {
         super("Wolf", 'e', 100); // name, display char, hitpoints
@@ -43,10 +56,46 @@ public class Wolf extends Actor {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
 
+        if (!tamed) {
+            actions.add(new AttackAction(this, direction));
+        }
 
-        actions.add(new AttackAction(this, direction));
+
+        List<Item> playerItems = otherActor.getItemInventory();
+        for (Item item : playerItems) {
+            // use asCapability to safely check if item has TamingItem capability
+            item.asCapability(TamingItem.class).ifPresent(tamingItem -> {
+                // check if this Wolf can be tamed with that TamingItem
+                if (this.canBeTamedWith(tamingItem)) {
+                    actions.add(new TameAction(this, tamingItem));
+                }
+            });
+        }
+
+
 
         return actions;
+    }
+
+    @Override
+    public TamingItemType getTamingItemType() {
+        return TamingItemType.FOR_PREDATORS;
+    }
+
+
+    @Override
+    public void onTamedBy(Player player) {
+        this.tamed = true;
+        this.owner = player;
+        behaviours.clear(); // stop random wandering
+        behaviours.put(10, new FollowBehaviour(player));
+        behaviours.put(5, new ProtectOwnerBehaviour(player));
+
+    }
+
+    @Override
+    public boolean isTamed() {
+        return tamed;
     }
 
 

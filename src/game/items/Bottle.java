@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.DrinkAction;
-import game.items.iteminterfaces.Drinkable;
+import game.interfaces.Drinkable;
 import game.player.Player;
 
 public class Bottle extends Item implements Drinkable {
@@ -19,7 +19,9 @@ public class Bottle extends Item implements Drinkable {
 
 
     @Override
-    public String drunkBy(Player player) {
+    public String drunkBy(Actor actor) {
+        Player player = (Player) actor;
+
         if (capacity > 0) {
             capacity--;
             player.increaseHydration(4);

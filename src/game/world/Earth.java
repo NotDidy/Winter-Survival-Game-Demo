@@ -27,16 +27,18 @@ public class Earth extends World {
         DefaultGroundCreator groundCreator = new DefaultGroundCreator();
         groundCreator.registerGround('.', Snow::new);
         groundCreator.registerGround('Y', YewBerryTree ::new);
+        groundCreator.registerGround('T', AppleTree ::new);
+        groundCreator.registerGround('A', HazelnutTree ::new);
 
         List<String> map = Arrays.asList(
                 "........................................",
-                ".............Y..........................",
+                ".............Y...................A......",
+                "........T...............................",
+                "........................................",
+                "...A..................T.................",
                 "........................................",
                 "........................................",
-                "........................................",
-                "........................................",
-                "........................................",
-                "........................................",
+                "...............Y.............T..........",
                 "........................................",
                 "........................................"
         );
@@ -46,12 +48,14 @@ public class Earth extends World {
 
 
         this.addPlayer(this.player, gameMap.at(1, 1));
-        //gameMap.at(2, 1).addActor(new Bear());
-        //gameMap.at(7, 6).addActor(new Wolf());
-        //gameMap.at(3, 3).addActor(new Deer());
+        gameMap.at(5, 7).addActor(new Bear());
+        gameMap.at(2, 1).addActor(new Deer());
+        gameMap.at(7, 9).addActor(new Deer());
+        gameMap.at(2, 4).addActor(new Wolf());
         this.player.addItemToInventory(new Bedroll());
         this.player.addItemToInventory(new Bottle());
-        this.player.addItemToInventory(new YewBerry());
+        this.player.addItemToInventory(new Seeds());
+        this.player.addItemToInventory(new Bones());
     }
 
 

@@ -3,7 +3,7 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.items.iteminterfaces.Consumable;
+import game.interfaces.Consumable;
 import game.player.Player;
 
 public class ConsumeAction extends Action {
@@ -15,7 +15,7 @@ public class ConsumeAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        return item.consumedBy((Player) actor);
+        return item.consumedBy(actor);
 
     }
 
