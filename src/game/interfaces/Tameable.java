@@ -1,10 +1,20 @@
 package game.interfaces;
 
-import edu.monash.fit2099.engine.items.Item;
+import game.items.ConsumableType;
+import game.items.TamingItem;
 import game.player.Player;
 
 public interface Tameable {
-    boolean canBeTamedWith(Item item);
+
+
+
+     default boolean canBeTamedWith(TamingItem item) {
+        return item.getConsumableType() == getPreferredFoodType();
+    }
+    ConsumableType getPreferredFoodType();
+
+
     void onTamedBy(Player player);
+    boolean isTamed();
 }
 

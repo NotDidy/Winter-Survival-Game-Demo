@@ -16,7 +16,6 @@ public class Apple extends Item implements Consumable {
 
     public Apple() {
         super("Apple", 'a', true);
-        // Add a consume action so Explorer can eat it
 
     }
 
