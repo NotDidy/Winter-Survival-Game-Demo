@@ -87,7 +87,7 @@ public class Wolf extends Actor implements Tameable {
     public void onTamedBy(Player player) {
         this.tamed = true;
         this.owner = player;
-        behaviours.remove(5); // stop random wandering
+        behaviours.clear(); // stop random wandering
         behaviours.put(10, new FollowBehaviour(player));
         behaviours.put(5, new ProtectOwnerBehaviour(player));
 
