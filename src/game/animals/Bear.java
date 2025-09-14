@@ -9,10 +9,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import game.actions.AttackAction;
 import game.actions.TameAction;
-import game.animals.behaviors.AttackBehaviour;
-import game.animals.behaviors.FollowBehaviour;
-import game.animals.behaviors.ProtectOwnerBehaviour;
-import game.animals.behaviors.WanderBehaviour;
+import game.animals.behaviors.*;
 
 import game.interfaces.Tameable;
 import game.items.TamingItem;
@@ -85,7 +82,7 @@ public class Bear extends Actor implements Tameable {
     public void onTamedBy(Player player) {
         this.tamed = true;
         this.owner = player;
-        behaviours.remove(5); // stop random wandering
+        behaviours.clear(); // stop random wandering
         behaviours.put(10, new FollowBehaviour(player));
         behaviours.put(5, new ProtectOwnerBehaviour(player));
 
